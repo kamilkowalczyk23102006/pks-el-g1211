@@ -11,7 +11,13 @@
     "7202": "Kurs 7202: Pasłęk -> Gładysze",
     "7203": "Kurs 7203: Gładysze -> Pasłęk",
     "595": "Kurs 595: Pasłęk -> Kąty",
-    "600": "Kurs 600: Kąty -> Pasłęk"
+    "600": "Kurs 600: Kąty -> Pasłęk",
+     "573": "Kurs 573: Gładysze -> Pasłęk",
+     "4191": "Kurs 4191: Pasłęk -> Młynarska Wola",
+     "4192": "Kurs 4192: Młynarska Wola -> Pasłęk",
+     "4182": "Kurs 4182: Pasłęk -> Młynarska Wola",
+     "4181": "Kurs 4181: Młynarska Wola -> Pasłęk",
+     "741": "Kurs 741: Pasłęk -> Gładysze",
   },
   "obiegi": {
     "2": ["7419", "7420", "7200", "7201", "615", "620", "7421", "7422", "7202", "7203", "595", "600"],
