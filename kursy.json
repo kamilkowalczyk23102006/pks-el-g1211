@@ -34,7 +34,7 @@
   },
   "trasy": {
     "0000": [
-      { "czas": "00:00", "nazwa": "Miłego Dnia!", "zapowiedz": "Zapowiedź testowa, PKS w Elbląg, oddział w Pasłęku życzy miłego dnia!" }
+      { "czas": "00:00", "nazwa": "Miłego Dnia!", "zapowiedz": "Zapowiedź testowa, PKS w Elblągu, oddział w Pasłęku życzy miłego dnia!" }
     ],
     "615": [
       { "czas": "10:50", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
