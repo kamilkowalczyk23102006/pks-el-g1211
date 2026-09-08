@@ -4,16 +4,16 @@
     "7420": "Kurs 7420: Kąty -> Pasłęk",
     "7200": "Kurs 7200: Pasłęk -> Gładysze",
     "7201": "Kurs 7201: Gładysze -> Pasłęk",
-    "615":  "Kurs 615: Pasłęk -> Dzierzgoń",
-    "620":  "Kurs 620: Dzierzgoń -> Pasłęk",
+    "615": "Kurs 615: Pasłęk -> Dzierzgoń",
+    "620": "Kurs 620: Dzierzgoń -> Pasłęk",
     "7421": "Kurs 7421: Pasłęk -> Kąty",
     "7422": "Kurs 7422: Kąty -> Pasłęk",
     "7202": "Kurs 7202: Pasłęk -> Gładysze",
     "7203": "Kurs 7203: Gładysze -> Pasłęk",
-    "595":  "Kurs 595: Pasłęk -> Kąty",
-    "600":  "Kurs 600: Kąty -> Pasłęk"
+    "595": "Kurs 595: Pasłęk -> Kąty",
+    "600": "Kurs 600: Kąty -> Pasłęk"
   },
-"obiegi": {
+  "obiegi": {
     "2": ["7419", "7420", "7200", "7201", "615", "620", "7421", "7422", "7202", "7203", "595", "600"],
     "4": ["1134", "1154", "7110", "7113", "7114", "1167"],
     "9": ["1152", "162", "7196", "7197", "7122", "7121", "1901", "943", "634"],
@@ -34,7 +34,7 @@
   },
   "trasy": {
     "0000": [
-      { "czas": "00:00", "nazwa": "Miłego Dnia!", "zapowiedz": "Zapowiedź testowa, PKS w Elbląg, oddział w Pasłęku życzy miłego dnia!" },
+      { "czas": "00:00", "nazwa": "Miłego Dnia!", "zapowiedz": "Zapowiedź testowa, PKS w Elbląg, oddział w Pasłęku życzy miłego dnia!" }
     ],
     "615": [
       { "czas": "10:50", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
@@ -108,7 +108,7 @@
       { "czas": "07:30", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty" },
       { "czas": "07:32", "nazwa": "Czarna Góra", "zapowiedz": "Następny przystanek: Czarna Góra" },
       { "czas": "07:34", "nazwa": "Rydzówka", "zapowiedz": "Następny przystanek: Rydzówka" },
-      { "czas": "07:36", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },               
+      { "czas": "07:36", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },
       { "czas": "07:38", "nazwa": "Nowa Wieś", "zapowiedz": "Następny przystanek: Nowa Wieś" },
       { "czas": "07:39", "nazwa": "Nowa Wieś - II", "zapowiedz": "Następny przystanek: Nowa Wieś dwa" },
       { "czas": "07:43", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
@@ -212,7 +212,7 @@
       { "czas": "15:50", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty" },
       { "czas": "15:52", "nazwa": "Czarna Góra", "zapowiedz": "Następny przystanek: Czarna Góra" },
       { "czas": "15:55", "nazwa": "Rydzówka", "zapowiedz": "Następny przystanek: Rydzówka" },
-      { "czas": "15:57", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },               
+      { "czas": "15:57", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },
       { "czas": "15:58", "nazwa": "Nowa Wieś", "zapowiedz": "Następny przystanek: Nowa Wieś" },
       { "czas": "15:59", "nazwa": "Nowa Wieś - II", "zapowiedz": "Następny przystanek: Nowa Wieś dwa" },
       { "czas": "16:03", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
@@ -222,7 +222,7 @@
       { "czas": "13:20", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty" },
       { "czas": "13:22", "nazwa": "Czarna Góra", "zapowiedz": "Następny przystanek: Czarna Góra" },
       { "czas": "13:24", "nazwa": "Rydzówka", "zapowiedz": "Następny przystanek: Rydzówka" },
-      { "czas": "13:26", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },               
+      { "czas": "13:26", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },
       { "czas": "13:28", "nazwa": "Nowa Wieś", "zapowiedz": "Następny przystanek: Nowa Wieś" },
       { "czas": "13:29", "nazwa": "Nowa Wieś - II", "zapowiedz": "Następny przystanek: Nowa Wieś dwa" },
       { "czas": "13:33", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
