@@ -33,7 +33,9 @@
     "7S": ["143", "1141", "7112", "7113", "7118", "7117"]
   },
   "trasy": {
-    "0000": [],
+    "0000": [
+      { "czas": "10:50", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Zapowiedź testowa, PKS w Elbląg, oddział w Pasłęku życzy miłego dnia!" },
+    ],
     "615": [
       { "czas": "10:50", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
       { "czas": "10:52", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
