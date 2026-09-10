@@ -155,7 +155,7 @@
       { "czas": "11:28", "nazwa": "Protowo", "zapowiedz": "Następny przystanek: Protowo" },
       { "czas": "11:29", "nazwa": "Sójki", "zapowiedz": "Następny przystanek: Sójki" },
       { "czas": "11:32", "nazwa": "Pachoły", "zapowiedz": "Następny przystanek: Pachoły" },
-      { "czas": "11:38", "nazwa": "Dzierzgoń Centrum", "zapowiedz": "Następny przystanek: Dzierzgoń Centrum. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "11:38", "nazwa": "Dzierzgoń Centrum", "zapowiedz": "Następny przystanek Dzierzgoń - Centrum. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "620": [
       { "czas": "11:50", "nazwa": "Dzierzgoń Centrum", "zapowiedz": "Następny przystanek: Dzierzgoń Centrum" },
@@ -179,7 +179,7 @@
       { "czas": "12:33", "nazwa": "Pasłęk - ulica Wojska Polskiego", "zapowiedz": "Następny przystanek: Pasłęk, ulica Wojska Polskiego" },
       { "czas": "12:34", "nazwa": "Pasłęk - ulica Jagiełły", "zapowiedz": "Następny przystanek: Pasłęk, ulica Jagiełły" },
       { "czas": "12:36", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
-      { "czas": "12:38", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "12:38", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek Pasłęk - Dworzec Kolejowy. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7419": [
       { "czas": "07:10", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
@@ -189,7 +189,7 @@
       { "czas": "07:20", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },
       { "czas": "07:22", "nazwa": "Rydzówka", "zapowiedz": "Następny przystanek: Rydzówka" },
       { "czas": "07:24", "nazwa": "Czarna Góra", "zapowiedz": "Następny przystanek: Czarna Góra" },
-      { "czas": "07:26", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "07:26", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7421": [
       { "czas": "13:01", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
@@ -199,7 +199,7 @@
       { "czas": "13:10", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },
       { "czas": "13:12", "nazwa": "Rydzówka", "zapowiedz": "Następny przystanek: Rydzówka" },
       { "czas": "13:14", "nazwa": "Czarna Góra", "zapowiedz": "Następny przystanek: Czarna Góra" },
-      { "czas": "13:16", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "13:16", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7420": [
       { "czas": "07:30", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty" },
@@ -209,7 +209,7 @@
       { "czas": "07:38", "nazwa": "Nowa Wieś", "zapowiedz": "Następny przystanek: Nowa Wieś" },
       { "czas": "07:39", "nazwa": "Nowa Wieś - II", "zapowiedz": "Następny przystanek: Nowa Wieś dwa" },
       { "czas": "07:43", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
-      { "czas": "07:45", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "07:45", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk - ulica Ogrodowa. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7200": [
       { "czas": "08:00", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
@@ -230,7 +230,8 @@
       { "czas": "08:30", "nazwa": "Karwiny", "zapowiedz": "Następny przystanek: Karwiny" },
       { "czas": "08:34", "nazwa": "Wilczęta - Kolonia", "zapowiedz": "Następny przystanek: Wilczęta, Kolonia" },
       { "czas": "08:36", "nazwa": "Wilczęta - Poczta", "zapowiedz": "Następny przystanek: Wilczęta, Poczta" },
-      { "czas": "08:39", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek: Gładysze. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "08:39", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek Gładysze. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg.
+" }
     ],
     "7201": [
       { "czas": "08:45", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek: Gładysze" },
@@ -251,7 +252,7 @@
       { "czas": "09:18", "nazwa": "Pasłęk - Kolonia", "zapowiedz": "Następny przystanek: Pasłęk, Kolonia" },
       { "czas": "09:20", "nazwa": "Pasłęk - ulica Jagiełły", "zapowiedz": "Następny przystanek: Pasłęk, ulica Jagiełły" },
       { "czas": "09:22", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
-      { "czas": "09:24", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "09:24", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk - ulica Ogrodowa. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7202": [
       { "czas": "13:30", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
@@ -272,7 +273,8 @@
       { "czas": "14:00", "nazwa": "Karwiny", "zapowiedz": "Następny przystanek: Karwiny" },
       { "czas": "14:04", "nazwa": "Wilczęta - Kolonia", "zapowiedz": "Następny przystanek: Wilczęta, Kolonia" },
       { "czas": "14:06", "nazwa": "Wilczęta - Poczta", "zapowiedz": "Następny przystanek: Wilczęta, Poczta" },
-      { "czas": "14:09", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek: Gładysze. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "14:09", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek Gładysze. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg.
+" }
     ],
     "7203": [
       { "czas": "14:50", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek: Gładysze" },
@@ -293,7 +295,7 @@
       { "czas": "15:23", "nazwa": "Pasłęk - Kolonia", "zapowiedz": "Następny przystanek: Pasłęk, Kolonia" },
       { "czas": "15:25", "nazwa": "Pasłęk - ulica Jagiełły", "zapowiedz": "Następny przystanek: Pasłęk, ulica Jagiełły" },
       { "czas": "15:27", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
-      { "czas": "15:29", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "15:29", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk - ulica Ogrodowa. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "595": [
       { "czas": "15:30", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
@@ -303,7 +305,7 @@
       { "czas": "15:38", "nazwa": "Nowa Wieś - Cierpkie", "zapowiedz": "Następny przystanek: Nowa Wieś Cierpkie, Dworzec Kolejowy" },
       { "czas": "15:40", "nazwa": "Rydzówka", "zapowiedz": "Następny przystanek: Rydzówka" },
       { "czas": "15:43", "nazwa": "Czarna Góra", "zapowiedz": "Następny przystanek: Czarna Góra" },
-      { "czas": "15:45", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "15:45", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "600": [
       { "czas": "15:50", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty" },
@@ -313,7 +315,7 @@
       { "czas": "15:58", "nazwa": "Nowa Wieś", "zapowiedz": "Następny przystanek: Nowa Wieś" },
       { "czas": "15:59", "nazwa": "Nowa Wieś - II", "zapowiedz": "Następny przystanek: Nowa Wieś dwa" },
       { "czas": "16:03", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
-      { "czas": "16:05", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "16:05", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk - ulica Ogrodowa. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7422": [
       { "czas": "13:20", "nazwa": "Kąty", "zapowiedz": "Następny przystanek: Kąty" },
@@ -323,7 +325,7 @@
       { "czas": "13:28", "nazwa": "Nowa Wieś", "zapowiedz": "Następny przystanek: Nowa Wieś" },
       { "czas": "13:29", "nazwa": "Nowa Wieś - II", "zapowiedz": "Następny przystanek: Nowa Wieś dwa" },
       { "czas": "13:33", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
-      { "czas": "13:35", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa. Przystanek końcowy, prosimy przygotować się do wysiadania. Dziękujemy za podróż na pokładzie autobusu PKS Elbląg." }
+      { "czas": "13:35", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk - ulica Ogrodowa. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ]
   }
 }
