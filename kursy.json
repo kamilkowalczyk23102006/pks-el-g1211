@@ -272,8 +272,7 @@
       { "czas": "14:00", "nazwa": "Karwiny", "zapowiedz": "Następny przystanek: Karwiny" },
       { "czas": "14:04", "nazwa": "Wilczęta - Kolonia", "zapowiedz": "Następny przystanek: Wilczęta, Kolonia" },
       { "czas": "14:06", "nazwa": "Wilczęta - Poczta", "zapowiedz": "Następny przystanek: Wilczęta, Poczta" },
-      { "czas": "14:09", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek Gładysze. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg.
-" }
+      { "czas": "14:09", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek Gładysze. Przystanek końcowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
     ],
     "7203": [
       { "czas": "14:50", "nazwa": "Gładysze", "zapowiedz": "Następny przystanek: Gładysze" },
