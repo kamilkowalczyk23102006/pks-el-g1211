@@ -669,7 +669,7 @@
     { "czas": "06:31", "nazwa": "Gronowo Górne - skrzyżowanie", "zapowiedz": "Następny przystanek: Gronowo Górne, skrzyżowanie" },
     { "czas": "06:32", "nazwa": "Gronowo Górne - szkoła", "zapowiedz": "Następny przystanek: Gronowo Górne, szkoła" },
     { "czas": "06:33", "nazwa": "Gronowo Górne - Elbląg Grunwaldzka (RDP)", "zapowiedz": "Następny przystanek: Gronowo Górne, Elbląg Grunwaldzka RDP" },
-    { "czas": "06:34", "nazwa": "Elbląg - al. Grunwaldzka (lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
+    { "czas": "06:34", "nazwa": "Elbląg - al. Grunwaldzka (Lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
     { "czas": "06:39", "nazwa": "Elbląg - Dworzec Autobusowy", "zapowiedz": "Przystanek końcowy: Elbląg - Dworzec Autobusowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
   ],
   "7128": [
@@ -697,8 +697,8 @@
     { "czas": "09:59", "nazwa": "Gronowo Górne - skrzyżowanie", "zapowiedz": "Następny przystanek: Gronowo Górne, skrzyżowanie" },
     { "czas": "10:00", "nazwa": "Gronowo Górne - szkoła", "zapowiedz": "Następny przystanek: Gronowo Górne, szkoła" },
     { "czas": "10:02", "nazwa": "Gronowo Górne - Elbląg Grunwaldzka (RDP)", "zapowiedz": "Następny przystanek: Gronowo Górne, Elbląg Grunwaldzka RDP" },
-    { "czas": "10:03", "nazwa": "Elbląg - al. Grunwaldzka (lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
-    { "czas": "10:05", "nazwa": "Elbląg - al. Grunwaldzka (hotel)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, hotel" },
+    { "czas": "10:03", "nazwa": "Elbląg - al. Grunwaldzka (Lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
+    { "czas": "10:05", "nazwa": "Elbląg - al. Grunwaldzka (Hotel)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, hotel" },
     { "czas": "10:06", "nazwa": "Elbląg - Dworzec Autobusowy", "zapowiedz": "Przystanek końcowy: Elbląg - Dworzec Autobusowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
   ],
   "7132": [
@@ -726,8 +726,8 @@
     { "czas": "12:09", "nazwa": "Gronowo Górne - skrzyżowanie", "zapowiedz": "Następny przystanek: Gronowo Górne, skrzyżowanie" },
     { "czas": "12:10", "nazwa": "Gronowo Górne - szkoła", "zapowiedz": "Następny przystanek: Gronowo Górne, szkoła" },
     { "czas": "12:12", "nazwa": "Gronowo Górne - Elbląg Grunwaldzka (RDP)", "zapowiedz": "Następny przystanek: Gronowo Górne, Elbląg Grunwaldzka RDP" },
-    { "czas": "12:13", "nazwa": "Elbląg - al. Grunwaldzka (lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
-    { "czas": "12:15", "nazwa": "Elbląg - al. Grunwaldzka (hotel)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, hotel" },
+    { "czas": "12:13", "nazwa": "Elbląg - al. Grunwaldzka (Lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
+    { "czas": "12:15", "nazwa": "Elbląg - al. Grunwaldzka (Hotel)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, hotel" },
     { "czas": "12:16", "nazwa": "Elbląg - Dworzec Autobusowy", "zapowiedz": "Przystanek końcowy: Elbląg - Dworzec Autobusowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
   ],
   "1172": [
@@ -755,7 +755,7 @@
     { "czas": "14:41", "nazwa": "Gronowo Górne - skrzyżowanie", "zapowiedz": "Następny przystanek: Gronowo Górne, skrzyżowanie" },
     { "czas": "14:42", "nazwa": "Gronowo Górne - szkoła", "zapowiedz": "Następny przystanek: Gronowo Górne, szkoła" },
     { "czas": "14:43", "nazwa": "Gronowo Górne - Elbląg Grunwaldzka (RDP)", "zapowiedz": "Następny przystanek: Gronowo Górne, Elbląg Grunwaldzka RDP" },
-    { "czas": "14:44", "nazwa": "Elbląg - al. Grunwaldzka (lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
+    { "czas": "14:44", "nazwa": "Elbląg - al. Grunwaldzka (Lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
     { "czas": "14:49", "nazwa": "Elbląg - Dworzec Autobusowy", "zapowiedz": "Przystanek końcowy: Elbląg - Dworzec Autobusowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
   ],
   "7134": [
@@ -783,8 +783,8 @@
     { "czas": "16:54", "nazwa": "Gronowo Górne - skrzyżowanie", "zapowiedz": "Następny przystanek: Gronowo Górne, skrzyżowanie" },
     { "czas": "16:55", "nazwa": "Gronowo Górne - szkoła", "zapowiedz": "Następny przystanek: Gronowo Górne, szkoła" },
     { "czas": "16:57", "nazwa": "Gronowo Górne - Elbląg Grunwaldzka (RDP)", "zapowiedz": "Następny przystanek: Gronowo Górne, Elbląg Grunwaldzka RDP" },
-    { "czas": "16:58", "nazwa": "Elbląg - al. Grunwaldzka (lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
-    { "czas": "17:00", "nazwa": "Elbląg - al. Grunwaldzka (hotel)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, hotel" },
+    { "czas": "16:58", "nazwa": "Elbląg - al. Grunwaldzka (Lecznica)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, lecznica" },
+    { "czas": "17:00", "nazwa": "Elbląg - al. Grunwaldzka (Hotel)", "zapowiedz": "Następny przystanek: Elbląg, aleja Grunwaldzka, hotel" },
     { "czas": "17:01", "nazwa": "Elbląg - Dworzec Autobusowy", "zapowiedz": "Przystanek końcowy: Elbląg - Dworzec Autobusowy. Prosimy o zabranie bagażu oraz wszystkich rzeczy osobistych. Dziękujemy za wspólną podróż i zapraszamy do ponownego skorzystania z usług PKS Elbląg." }
   ],
     "7422": [
