@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>PKS Zapowiedzi Przystanków</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f2f5; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h0, h1, h2 { color: #0056b3; }
+        .status { padding: 10px; margin-bottom: 15px; border-radius: 4px; font-weight: bold; }
+        .online { background: #d4edda; color: #155724; }
+        .offline { background: #fff3cd; color: #856404; }
+        select, button { padding: 10px; font-size: 16px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+        .przystanek-item { padding: 8px; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>System Zapowiedzi Przystanków PKS</h2>
+    <div id="statusSieci" class="status online">Inicjalizowanie systemu...</div>
+
+    <label for="wyborKursu">Wybierz kurs:</label>
+    <select id="wyborKursu" onchange="zmienObieg()">
+        <!-- Opcje załadują się dynamicznie -->
+    </select>
+
+    <h3>Trasa kursu:</h3>
+    <div id="listaTrasy">Ładowanie trasy...</div>
+</div>
+
+<script>
+    // Zapasowa baza danych (gdy przeglądarka blokuje pobieranie pliku lokalnie)
+    const zapasoweDane = {
+      "nazwyKursow": {
+        "7419": "Kurs 7419: Pasłęk -> Kąty",
+        "7420": "Kurs 7420: Kąty -> Pasłęk",
+        "7200": "Kurs 7200: Pasłęk -> Gładysze",
+        "7201": "Kurs 7201: Gładysze -> Pasłęk",
+        "615":  "Kurs 615: Pasłęk -> Dzierzgoń",
+        "620":  "Kurs 620: Dzierzgoń -> Pasłęk",
+        "7421": "Kurs 7421: Pasłęk -> Kąty",
+        "7422": "Kurs 7422: Kąty -> Pasłęk",
+        "7202": "Kurs 7202: Pasłęk -> Gładysze",
+        "7203": "Kurs 7203: Gładysze -> Pasłęk",
+        "595":  "Kurs 595: Pasłęk -> Kąty",
+        "600":  "Kurs 600: Kąty -> Pasłęk"
+      },
+      "obiegi": {
+        "2": ["7419", "7420", "7200", "7201", "615", "620", "7421", "7422", "7202", "7203", "595", "600"]
+      },
+      "trasy": {
+        "615": [
+          { "czas": "10:50", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
+          { "czas": "10:52", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
+          { "czas": "10:54", "nazwa": "Pasłęk - ulica Jagiełły", "zapowiedz": "Następny przystanek: Pasłęk, ulica Jagiełły" },
+          { "czas": "10:55", "nazwa": "Pasłęk - ulica Wojska Polskiego", "zapowiedz": "Następny przystanek: Pasłęk, ulica Wojska Polskiego" }
+        ],
+        "620": [
+          { "czas": "11:50", "nazwa": "Dzierzgoń Centrum", "zapowiedz": "Następny przystanek: Dzierzgoń Centrum" },
+          { "czas": "11:56", "nazwa": "Pachoły", "zapowiedz": "Następny przystanek: Pachoły" }
+        ],
+        "7419": [
+          { "czas": "07:10", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
+          { "czas": "07:13", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" }
+        ]
+      }
+    };
+
+    let nazwyKursow = {};
+    let obiegi = {};
+    let trasy = {};
+
+    const URL_BAZY_DANYCH = 'https://cdn.jsdelivr.net/gh/kamilkowalczyk23102006/pks-el-g1211@main/kursy.json';
+
+    async function inicjalizujRozklady() {
+        const statusDiv = document.getElementById('statusSieci');
+        try {
+            // Próba pobrania danych z internetu
+            const odpowiedz = await fetch(URL_BAZY_DANYCH + '?t=' + new Date().getTime());
+            if (!odpowiedz.ok) throw new Error('Błąd sieci');
+            
+            const dane = await odpowiedz.json();
+            localStorage.setItem('pks_kursy_cache', JSON.stringify(dane));
+            przypiszDane(dane);
+            
+            statusDiv.textContent = "Online: Rozkłady pobrane z GitHuba.";
+            statusDiv.className = "status online";
+
+        } catch (blad) {
+            console.warn("Nie udało się pobrać z sieci, sprawdzam pamięć lub używam danych wbudowanych.", blad);
+            
+            // Sprawdzamy czy mamy coś w pamięci przeglądarki
+            const zapisaneDane = localStorage.getItem('pks_kursy_cache');
+            if (zapisaneDane) {
+                przypiszDane(JSON.parse(zapisaneDane));
+                statusDiv.textContent = "Tryb offline: Wczytano z pamięci urządzenia.";
+                statusDiv.className = "status offline";
+            } else {
+                // Jeśli nie ma nic w cache, używamy bazy wbudowanej w kod (omija błąd blokady lokalnej)
+                przypiszDane(zapasoweDane);
+                statusDiv.textContent = "Tryb lokalny: Używam wbudowanej bazy danych.";
+                statusDiv.className = "status offline";
+            }
+        }
+    }
+
+    function przypiszDane(dane) {
+        nazwyKursow = dane.nazwyKursow || {};
+        obiegi = dane.obiegi || {};
+        trasy = dane.trasy || {};
+        
+        budujListeKursow();
+    }
+
+    function budujListeKursow() {
+        const select = document.getElementById('wyborKursu');
+        select.innerHTML = '';
+        
+        const kursyObiegu = obiegi["2"] || [];
+        
+        kursyObiegu.forEach(idKursu => {
+            let opcja = document.createElement('option');
+            opcja.value = idKursu;
+            opcja.textContent = nazwyKursow[idKursu] || ("Kurs " + idKursu);
+            select.appendChild(opcja);
+        });
+
+        zmienObieg();
+    }
+
+    function zmienObieg() {
+        const select = document.getElementById('wyborKursu');
+        const wybraneId = select.value;
+        const kontenerTrasy = document.getElementById('listaTrasy');
+        
+        kontenerTrasy.innerHTML = '';
+        
+        const przystanki = trasy[wybraneId] || [];
+        
+        if (przystanki.length === 0) {
+            kontenerTrasy.innerHTML = 'Brak przystanków dla tego kursu.';
+            return;
+        }
+
+        przystanki.forEach(p => {
+            let div = document.createElement('div');
+            div.className = 'przystanek-item';
+            div.innerHTML = `<strong>${p.czas}</strong> - ${p.nazwa}`;
+            kontenerTrasy.appendChild(div);
+        });
+    }
+
+    inicjalizujRozklady();
+</script>
+
+</body>
+</html>
