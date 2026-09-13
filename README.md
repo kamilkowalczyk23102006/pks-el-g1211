@@ -1,2 +1,0 @@
-# pkselblag
-Aplikacja PKS
