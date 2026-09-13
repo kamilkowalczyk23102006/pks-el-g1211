@@ -2,157 +2,789 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>PKS Zapowiedzi Przystanków</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKS Elbląg - interfejs kierowcy autobusu</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f2f5; color: #333; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h0, h1, h2 { color: #0056b3; }
-        .status { padding: 10px; margin-bottom: 15px; border-radius: 4px; font-weight: bold; }
-        .online { background: #d4edda; color: #155724; }
-        .offline { background: #fff3cd; color: #856404; }
-        select, button { padding: 10px; font-size: 16px; margin: 5px 0; width: 100%; box-sizing: border-box; }
-        .przystanek-item { padding: 8px; border-bottom: 1px solid #eee; }
+        body { font-family: Arial, sans-serif; background-color: #0d0e15; color: #e0e6ed; margin: 0; padding: 15px; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        .main-content { flex: 1; }
+
+        .brand-header { 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: #131521; 
+            padding: 15px 20px; 
+            border-radius: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid #23273e; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .brand-logo-container { display: flex; align-items: center; gap: 15px; }
+        .brand-logo { max-height: 55px; width: auto; display: block; }
+        .brand-title { font-size: 1.4em; font-weight: bold; color: #fff; letter-spacing: 0.5px; }
+        .brand-subtitle-wrapper { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+        .brand-subtitle { font-size: 0.85em; color: #8fa0b5; text-transform: uppercase; }
+        
+        .version-badge {
+            background: rgba(140, 158, 255, 0.15);
+            color: #8c9eff;
+            border: 1px solid rgba(140, 158, 255, 0.3);
+            font-size: 0.65em;
+            font-weight: bold;
+            padding: 1px 5px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #090a0f;
+            border: 1px solid #1a1d2d;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .status-container.online {
+            border-color: rgba(0, 230, 118, 0.3);
+            color: #00e676;
+        }
+        .status-container.online .status-dot {
+            background-color: #00e676;
+            box-shadow: 0 0 8px #00e676;
+        }
+        .status-container.offline {
+            border-color: rgba(211, 47, 47, 0.3);
+            color: #ff5252;
+        }
+        .status-container.offline .status-dot {
+            background-color: #ff5252;
+            box-shadow: 0 0 8px #ff5252;
+        }
+
+        .clock-container {
+            background: #090a0f;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 8px 18px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: right;
+        }
+        .clock-label {
+            font-size: 0.7em;
+            color: rgba(0, 229, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+        .clock { 
+            font-size: 2.2em; 
+            font-weight: bold; 
+            color: #00e5ff; 
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+        }
+
+        .main-info-box { background: #1c1808; border: 1px solid #cca300; border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; color: #fff; font-size: 1.1em; }
+        .main-info-title { font-weight: bold; color: #ffcc00; font-size: 0.85em; text-transform: uppercase; margin-bottom: 4px; }
+
+        .announcement-control-section {
+            background: #161825;
+            border: 1px solid #2a2e45;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+        .announcement-title {
+            font-weight: bold;
+            color: #8c9eff;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .announcement-layout {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .btn-change-stop {
+            background: #252a40;
+            color: #8c9eff;
+            border: 1px solid #353b59;
+            font-size: 1.6em;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .btn-change-stop:active {
+            background: #1e2233;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .current-stop-display {
+            flex-grow: 1;
+            background: #0c0d14;
+            border: 1px solid #2a2e45;
+            border-radius: 10px;
+            padding: 12px 18px;
+            text-align: center;
+        }
+        .stops-display-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .stop-box-pane {
+            background: #12141e;
+            border: 1px solid #1f2336;
+            border-radius: 8px;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        .current-stop-label {
+            font-size: 0.7em;
+            color: #6a7c9c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+        .current-stop-name {
+            font-size: 1.25em;
+            font-weight: bold;
+            color: #fff;
+        }
+        .announcement-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .btn-announcement-action {
+            flex: 1;
+            background: #2b3663;
+            color: #d1d9ff;
+            border: 1px solid #3c4982;
+            padding: 14px;
+            font-size: 1.05em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+        .btn-announcement-action:active {
+            background: #3f51b5;
+            color: #fff;
+            border-color: #5c6bc0;
+            box-shadow: 0 0 10px rgba(92, 107, 192, 0.4);
+        }
+
+        .extra-section { background: #131521; border: 1px solid #23273e; border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+        .extra-title { font-weight: bold; color: #82b1ff; font-size: 1.1em; text-transform: uppercase; margin-bottom: 10px; }
+        .extra-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+        
+        .btn-extra { 
+            background: #1e2540; 
+            color: #aeb9e6; 
+            border: 1px solid #2a3459; 
+            padding: 12px 15px; 
+            font-size: 0.95em; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: calc(33.33% - 7px); 
+            box-sizing: border-box;
+            text-align: center; 
+            transition: 0.2s;
+        }
+        .btn-extra:active { background: #283593; color: white; border-color: #3949ab; }
+
+        .header { display: flex; align-items: center; background: #131521; padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #23273e; }
+        .select-group { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; width: 100%; }
+        select, input[type="text"] { 
+            font-size: 1.1em; 
+            padding: 10px; 
+            border-radius: 8px; 
+            background: #1a1d2d; 
+            color: #fff; 
+            border: 1px solid #353b59; 
+            cursor: pointer; 
+        }
+        input[type="text"] { cursor: text; width: 140px; }
+        input[type="text"]:focus, select:focus { outline: none; border-color: #8c9eff; }
+        
+        .btn-search {
+            background: #3f51b5; 
+            color: white; 
+            border: none; 
+            padding: 11px 20px; 
+            font-size: 1.1em; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-search:active { background: #303f9f; }
+
+        .stop-card { 
+            background: #161825; 
+            padding: 15px; 
+            margin-bottom: 12px; 
+            border-radius: 10px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-left: 5px solid #ffcc00; 
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .stop-time { font-size: 1.6em; font-weight: bold; color: #ffcc00; min-width: 80px; }
+        .stop-name { font-size: 1.4em; font-weight: bold; margin-left: 10px; flex-grow: 1; }
+
+        .stop-card.active-stop {
+            background: #0b2e1c;
+            border-left: 8px solid #00e676;
+            box-shadow: 0 0 10px rgba(0, 230, 118, 0.15);
+        }
+        .stop-card.active-stop .stop-time { color: #00e676; }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #23273e;
+            text-align: center;
+            color: #6a7c9c;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        .footer-highlight {
+            color: #8c9eff;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>System Zapowiedzi Przystanków PKS</h2>
-    <div id="statusSieci" class="status online">Inicjalizowanie systemu...</div>
+    <!-- UKRYTY ELEMENT AUDIO -->
+    <audio id="glowny-odtwarzacz" style="display:none;"></audio>
 
-    <label for="wyborKursu">Wybierz kurs:</label>
-    <select id="wyborKursu" onchange="zmienObieg()">
-        <!-- Opcje załadują się dynamicznie -->
-    </select>
-
-    <h3>Trasa kursu:</h3>
-    <div id="listaTrasy">Ładowanie trasy...</div>
-</div>
-
-<script>
-    // Zapasowa baza danych (gdy przeglądarka blokuje pobieranie pliku lokalnie)
-    const zapasoweDane = {
-      "nazwyKursow": {
-        "7419": "Kurs 7419: Pasłęk -> Kąty",
-        "7420": "Kurs 7420: Kąty -> Pasłęk",
-        "7200": "Kurs 7200: Pasłęk -> Gładysze",
-        "7201": "Kurs 7201: Gładysze -> Pasłęk",
-        "615":  "Kurs 615: Pasłęk -> Dzierzgoń",
-        "620":  "Kurs 620: Dzierzgoń -> Pasłęk",
-        "7421": "Kurs 7421: Pasłęk -> Kąty",
-        "7422": "Kurs 7422: Kąty -> Pasłęk",
-        "7202": "Kurs 7202: Pasłęk -> Gładysze",
-        "7203": "Kurs 7203: Gładysze -> Pasłęk",
-        "595":  "Kurs 595: Pasłęk -> Kąty",
-        "600":  "Kurs 600: Kąty -> Pasłęk"
-      },
-      "obiegi": {
-        "2": ["7419", "7420", "7200", "7201", "615", "620", "7421", "7422", "7202", "7203", "595", "600"]
-      },
-      "trasy": {
-        "615": [
-          { "czas": "10:50", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" },
-          { "czas": "10:52", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
-          { "czas": "10:54", "nazwa": "Pasłęk - ulica Jagiełły", "zapowiedz": "Następny przystanek: Pasłęk, ulica Jagiełły" },
-          { "czas": "10:55", "nazwa": "Pasłęk - ulica Wojska Polskiego", "zapowiedz": "Następny przystanek: Pasłęk, ulica Wojska Polskiego" }
-        ],
-        "620": [
-          { "czas": "11:50", "nazwa": "Dzierzgoń Centrum", "zapowiedz": "Następny przystanek: Dzierzgoń Centrum" },
-          { "czas": "11:56", "nazwa": "Pachoły", "zapowiedz": "Następny przystanek: Pachoły" }
-        ],
-        "7419": [
-          { "czas": "07:10", "nazwa": "Pasłęk - ulica Ogrodowa", "zapowiedz": "Następny przystanek: Pasłęk, ulica Ogrodowa" },
-          { "czas": "07:13", "nazwa": "Pasłęk - Dworzec Kolejowy", "zapowiedz": "Następny przystanek: Pasłęk, Dworzec Kolejowy" }
-        ]
-      }
-    };
-
-    let nazwyKursow = {};
-    let obiegi = {};
-    let trasy = {};
-
-    const URL_BAZY_DANYCH = 'https://cdn.jsdelivr.net/gh/kamilkowalczyk23102006/pks-el-g1211@main/kursy.json';
-
-    async function inicjalizujRozklady() {
-        const statusDiv = document.getElementById('statusSieci');
-        try {
-            // Próba pobrania danych z internetu
-            const odpowiedz = await fetch(URL_BAZY_DANYCH + '?t=' + new Date().getTime());
-            if (!odpowiedz.ok) throw new Error('Błąd sieci');
+    <div class="main-content">
+        <div class="brand-header">
+            <div class="brand-logo-container">
+                <img src="https://lh3.googleusercontent.com/d/10DGk2muJ373WybjhPo0YCxMh_aoxSUVp" alt="PKS Elbląg Logo" class="brand-logo">
+                <div>
+                    <div class="brand-title">PKS ELBLĄG Sp. z o.o.</div>
+                    <div class="brand-subtitle-wrapper">
+                        <div class="brand-subtitle">System Pokładowy Kierowcy</div>
+                        <span class="version-badge">v1.29 (GitHub Pages)</span>
+                    </div>
+                </div>
+            </div>
             
-            const dane = await odpowiedz.json();
-            localStorage.setItem('pks_kursy_cache', JSON.stringify(dane));
-            przypiszDane(dane);
-            
-            statusDiv.textContent = "Online: Rozkłady pobrane z GitHuba.";
-            statusDiv.className = "status online";
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div id="status-sieci" class="status-container online">
+                    <span class="status-dot"></span>
+                    <span id="status-tekst">Online</span>
+                </div>
+                
+                <div class="clock-container">
+                    <div class="clock-label">Czas systemowy</div>
+                    <div class="clock" id="zegar">00:00:00</div>
+                </div>
+            </div>
+        </div>
 
-        } catch (blad) {
-            console.warn("Nie udało się pobrać z sieci, sprawdzam pamięć lub używam danych wbudowanych.", blad);
+        <div class="main-info-box">
+            <div class="main-info-title">📌 Komunikat / Notatka kierowcy:</div>
+            <span id="tekst-glowny">Dobrego dnia! Pamiętaj o sprawdzeniu biletów i podłączeniu tabletu do ładowania.</span>
+        </div>
+
+        <div class="announcement-control-section">
+            <div class="announcement-title">🔊 Sterowanie zapowiedziami przystanków (MP3)</div>
+            <div class="announcement-layout">
+                <button class="btn-change-stop" onclick="zmienAktywnyPrzystanek(-1)" title="Poprzedni przystanek">◀</button>
+                
+                <div class="current-stop-display">
+                    <div class="stops-display-grid">
+                        <div class="stop-box-pane">
+                            <div class="current-stop-label">Aktualny przystanek</div>
+                            <div class="current-stop-name" id="aktywny-przystanek-nazwa">Brak</div>
+                        </div>
+                        <div class="stop-box-pane">
+                            <div class="current-stop-label">Następny przystanek</div>
+                            <div class="current-stop-name" id="nastepny-przystanek-nazwa">Brak</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-change-stop" onclick="zmienAktywnyPrzystanek(1)" title="Następny przystanek">▶</button>
+            </div>
+            <div class="announcement-actions">
+                <button class="btn-announcement-action" onclick="odtworzJakoNastepny()">📢 Zapowiedz jako Następny</button>
+                <button class="btn-announcement-action" onclick="odtworzJakoAktualny()">📢 Zapowiedz jako Aktualny</button>
+            </div>
+        </div>
+
+        <div class="extra-section">
+            <div class="extra-title">📢 Szybkie komunikaty specjalne</div>
+            <div class="extra-grid">
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">📋 KONTROLA BILETÓW</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">🚭 ZAKAZ PALENIA I JEDZENIA</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">♿ MIEJSCA PRIORYTETOWE</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">🪑 CZYSTOŚĆ / FOTELE</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">🚪 PRZEJŚCIE I DRZWI</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">🧳 BAGAŻ / BEZPIECZEŃSTWO</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">❄️ KLIMATYZACJA</button>
+                <button class="btn-extra" onclick="odtwarzajKolejnePliki(['Nastepny_przystanek.mp3'])">🎗️ PASY BEZPIECZEŃSTWA</button>
+                
+                <button class="btn-extra btn-danger" id="btn-ewakuacja" 
+                    onmousedown="rozpocznijTrzymanieEwakuacji()" onmouseup="anulujTrzymanieEwakuacji()" onmouseleave="anulujTrzymanieEwakuacji()"
+                    ontouchstart="rozpocznijTrzymanieEwakuacji()" ontouchend="anulujTrzymanieEwakuacji()">
+                    🚨 EWAKUACJA (Przytrzymaj 4s)
+                </button>
+            </div>
+        </div>
+
+        <div class="header">
+            <div class="select-group">
+                <div>
+                    <label for="obiegi" style="color: #8c9eff;"><b>WYBIERZ OBIEG:</b></label><br>
+                    <select id="obiegi" onchange="zmienObieg()">
+                        <option value="ALL">-- WSZYSTKIE KURSY --</option>
+                        <option value="2">Obieg nr 2</option>
+                        <option value="3">Obieg nr 3</option>
+                        <option value="4">Obieg nr 4</option>
+                        <option value="9">Obieg nr 9</option>
+                        <option value="10">Obieg nr 10</option>
+                        <option value="14">Obieg nr 14</option>
+                        <option value="15">Obieg nr 15</option>
+                        <option value="16">Obieg nr 16</option>
+                        <option value="20">Obieg nr 20</option>
+                        <option value="22">Obieg nr 22</option>
+                        <option value="23">Obieg nr 23</option>
+                        <option value="24">Obieg nr 24</option>
+                        <option value="1B">Obieg 1B</option>
+                        <option value="1z">Obieg 1z</option>
+                        <option value="B-1">Obieg B-1</option>
+                        <option value="R3">Obieg R3</option>
+                        <option value="7S">Obieg sobotni - 7</option>
+                    </select>
+                </div>
+                
+                <div id="kontener-wyszukiwania" style="display: flex; gap: 10px; align-items: flex-end;">
+                    <div>
+                        <label for="szukaj-kursu" style="color: #8c9eff;"><b>WPISZ KURS:</b></label><br>
+                        <input type="text" id="szukaj-kursu" placeholder="np. 615">
+                    </div>
+                    <button class="btn-search" onclick="szukajKursuZPalca()">SZUKAJ</button>
+                </div>
+
+                <div id="kontener-listy-kursow" style="display: none;">
+                    <label for="kursy" style="color: #8c9eff;"><b>WYBIERZ KURS Z OBIEGU:</b></label><br>
+                    <select id="kursy" onchange="zmienKursZListy()">
+                        <option value="0000">*WYBIERZ KURS*</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="lista-przystankow"></div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 <span class="footer-highlight">Przedsiębiorstwo Komunikacji Samochodowej w Elblągu sp. z o.o.</span><br>
+        Aplikacja: <strong>System Pokładowy Kierowcy</strong> | Wersja: <strong>1.29 (GitHub Pages)</strong><br>
+        Wszelkie prawa zastrzeżone.
+    </div>
+
+    <script>
+        const mapowaniePrzystankowAudio = {
+            "Aniołowo": "Aniolowo.mp3",
+            "Bogaczewo": "Bogaczewo.mp3",
+            "Dłużyna": "Dluzyna.mp3",
+            "Dłużyna - (koło posesji 26)": "Dluzyna_kolo_posesji_26.mp3",
+            "Drużno": "Druzno.mp3",
+            "Dzierzgoń Centrum": "Dzierzgon_centrum.mp3",
+            "Elbląg - Dworzec Autobusowy": "Elblag_DA.mp3",
+            "Elbląg - al. Grunwaldzka (Hotel)": "Elblag_al_Grunwaldzka_hotel.mp3",
+            "Elbląg - al. Grunwaldzka (Lecznica)": "Elblag_al_Grunwaldzka_lecznica.mp3",
+            "Godkowo": "Godkowo.mp3",
+            "Gronowo Górne - Elbląg Grunwaldzka (RDP)": "Gronowo_Gorne_Elblag_al_Grunwaldzka_RDP.mp3",
+            "Gronowo Górne - ulica Szafirowa": "Gronowo_Gorne_Szafirowa.mp3",
+            "Gronowo Górne - skrzyżowanie": "Gronowo_Gorne_skrzyzowanie.mp3",
+            "Gronowo Górne - szkoła": "Gronowo_Gorne_szkola.mp3",
+            "Janów": "Janow.mp3",
+            "Komorowo Żuławskie": "Komorowo_Zulawskie.mp3",
+            "Krosienko": "Krosienko.mp3",
+            "Krosno II": "Krosno_2.mp3",
+            "Lisów": "Lisow.mp3",
+            "Marianka Kolonia": "Marianka_kolonia.mp3",
+            "Młynarska Wola": "Mlynarska_wola.mp3",
+            "Młynary Rynek": "Mlynary_rynek.mp3",
+            "Nowa Pilona": "Nowa_Pilona.mp3",
+            "Nowina I": "Nowina.mp3",
+            "Nowina II": "Nowina_2.mp3",
+            "Nowy Dwór": "Nowy_Dwor.mp3",
+            "Pasłęk - Dworzec Kolejowy": "Paslek_DK.mp3",
+            "Pasłęk - ulica Jagiełły": "Paslek_Jagielly.mp3",
+            "Pasłęk - ulica Ogrodowa": "Paslek_Ogrodowa.mp3",
+            "Pasłęk - ulica Sprzymierzonych": "Paslek_Sprzymierzonych.mp3",
+            "Pasłęk - ulica Sprzymierzonych SP": "Paslek_Sprzymierzonych_sp.mp3",
+            "Pasłęk - ulica Wojska Polskiego": "Paslek_Wojska_PolskiegoZSEiT.mp3",
+            "Pilona": "Pilona.mp3",
+            "Powodowo": "Powodowo.mp3",
+            "Rejsyty": "Rejsyty.mp3",
+            "Rychliki": "Rychliki.mp3",
+            "Rychliki Kolonia": "Rychliki_kolonia.mp3",
+            "Rzeczna": "Rzeczna.mp3",
+            "Węzina": "Wezina.mp3",
+            "Węzina II": "Wezina_2.mp3",
+            "Zielony Grąd": "Zielony_Grad.mp3"
+        };
+
+        // Względna ścieżka do folderu audio (działa idealnie na GitHub Pages, jeśli folder audio jest w tym samym katalogu)
+        const AUDIO_FOLDER = "audio/";
+
+        function odtwarzajKolejnePliki(tablicaPlikow) {
+            if (!tablicaPlikow || tablicaPlikow.length === 0) return;
             
-            // Sprawdzamy czy mamy coś w pamięci przeglądarki
-            const zapisaneDane = localStorage.getItem('pks_kursy_cache');
-            if (zapisaneDane) {
-                przypiszDane(JSON.parse(zapisaneDane));
-                statusDiv.textContent = "Tryb offline: Wczytano z pamięci urządzenia.";
-                statusDiv.className = "status offline";
+            const odtwarzacz = document.getElementById('glowny-odtwarzacz');
+            let indeks = 0;
+
+            function zaladujOdtworz() {
+                if (indeks >= tablicaPlikow.length) return;
+                
+                let pelnaSciezka = AUDIO_FOLDER + tablicaPlikow[indeks];
+                odtwarzacz.src = pelnaSciezka;
+                odtwarzacz.load();
+                
+                odtwarzacz.play().then(() => {
+                    console.log("Odtwarzanie:", pelnaSciezka);
+                }).catch(err => {
+                    console.warn("Autoplay zablokowany lub błąd pliku:", err);
+                });
+            }
+
+            odtwarzacz.onended = function() {
+                indeks++;
+                zaladujOdtworz();
+            };
+
+            odtwarzacz.onerror = function() {
+                console.warn("Błąd ładowania pliku audio, pomijam:", tablicaPlikow[indeks]);
+                indeks++;
+                zaladujOdtworz();
+            };
+
+            zaladujOdtworz();
+        }
+
+        function aktualizujZegar() {
+            const teraz = new Date();
+            document.getElementById('zegar').innerText = teraz.toLocaleTimeString('pl-PL');
+        }
+        setInterval(aktualizujZegar, 1000);
+        aktualizujZegar();
+
+        function aktualizujStatusSieci() {
+            const elementStatusu = document.getElementById('status-sieci');
+            const elementTekstu = document.getElementById('status-tekst');
+            
+            if (navigator.onLine) {
+                elementStatusu.className = "status-container online";
+                elementTekstu.innerText = "Online";
             } else {
-                // Jeśli nie ma nic w cache, używamy bazy wbudowanej w kod (omija błąd blokady lokalnej)
-                przypiszDane(zapasoweDane);
-                statusDiv.textContent = "Tryb lokalny: Używam wbudowanej bazy danych.";
-                statusDiv.className = "status offline";
+                elementStatusu.className = "status-container offline";
+                elementTekstu.innerText = "Offline";
             }
         }
-    }
+        window.addEventListener('online', aktualizujStatusSieci);
+        window.addEventListener('offline', aktualizujStatusSieci);
+        aktualizujStatusSieci();
 
-    function przypiszDane(dane) {
-        nazwyKursow = dane.nazwyKursow || {};
-        obiegi = dane.obiegi || {};
-        trasy = dane.trasy || {};
-        
-        budujListeKursow();
-    }
-
-    function budujListeKursow() {
-        const select = document.getElementById('wyborKursu');
-        select.innerHTML = '';
-        
-        const kursyObiegu = obiegi["2"] || [];
-        
-        kursyObiegu.forEach(idKursu => {
-            let opcja = document.createElement('option');
-            opcja.value = idKursu;
-            opcja.textContent = nazwyKursow[idKursu] || ("Kurs " + idKursu);
-            select.appendChild(opcja);
-        });
-
-        zmienObieg();
-    }
-
-    function zmienObieg() {
-        const select = document.getElementById('wyborKursu');
-        const wybraneId = select.value;
-        const kontenerTrasy = document.getElementById('listaTrasy');
-        
-        kontenerTrasy.innerHTML = '';
-        
-        const przystanki = trasy[wybraneId] || [];
-        
-        if (przystanki.length === 0) {
-            kontenerTrasy.innerHTML = 'Brak przystanków dla tego kursu.';
-            return;
+        function czyDzienRoboczy(data) {
+            const dzien = data.getDay();
+            return dzien >= 1 && dzien <= 5;
         }
 
-        przystanki.forEach(p => {
-            let div = document.createElement('div');
-            div.className = 'przystanek-item';
-            div.innerHTML = `<strong>${p.czas}</strong> - ${p.nazwa}`;
-            kontenerTrasy.appendChild(div);
+        function pobierzOstatniDzienRoboczyMiesiaca(rok, miesiac) {
+            let d = new Date(rok, miesiac + 1, 0);
+            while (!czyDzienRoboczy(d)) {
+                d.setDate(d.getDate() - 1);
+            }
+            return d;
+        }
+
+        function pobierzPierwszyDzienRoboczyMiesiaca(rok, miesiac) {
+            let d = new Date(rok, miesiac, 1);
+            while (!czyDzienRoboczy(d)) {
+                d.setDate(d.getDate() + 1);
+            }
+            return d;
+        }
+
+        function sprawdzKomunikatRozliczenia() {
+            const teraz = new Date();
+            const dzis = new Date(teraz.getFullYear(), teraz.getMonth(), teraz.getDate());
+            const rok = dzis.getFullYear();
+            const miesiac = dzis.getMonth();
+
+            let pokazKomunikat = false;
+            const ostDzienRoboczyBiezacego = pobierzOstatniDzienRoboczyMiesiaca(rok, miesiac);
+            const pierwDzienRoboczyNastepnego = pobierzPierwszyDzienRoboczyMiesiaca(rok, miesiac + 1);
+
+            if (dzis >= ostDzienRoboczyBiezacego && dzis <= pierwDzienRoboczyNastepnego) {
+                pokazKomunikat = true;
+            }
+
+            const ostDzienRoboczyPoprzedniego = pobierzOstatniDzienRoboczyMiesiaca(rok, miesiac - 1);
+            const pierwDzienRoboczyBiezacego = pobierzPierwszyDzienRoboczyMiesiaca(rok, miesiac);
+
+            if (dzis >= ostDzienRoboczyPoprzedniego && dzis <= pierwDzienRoboczyBiezacego) {
+                pokazKomunikat = true;
+            }
+
+            const elTekst = document.getElementById('tekst-glowny');
+            const podstawa = "Dobrego dnia! Pamiętaj o sprawdzeniu biletów i podłączeniu tabletu do ładowania.";
+
+            if (pokazKomunikat) {
+                elTekst.innerText = podstawa + " Rozlicz kartę pamięci bileterki!";
+            } else {
+                elTekst.innerText = podstawa;
+            }
+        }
+        sprawdzKomunikatRozliczenia();
+
+        let nazwyKursow = {};
+        let obiegi = {};
+        let trasy = {};
+
+        // Względna ścieżka do pliku z kursami w tym samym repozytorium
+        const PLIK_BAZY_DANYCH = 'kursy.json';
+
+        async function pobierzRozkladyZGitHuba() {
+            try {
+                const odpowiedz = await fetch(PLIK_BAZY_DANYCH + '?t=' + new Date().getTime());
+                if (!odpowiedz.ok) throw new Error('Błąd pobierania danych');
+                
+                const dane = await odpowiedz.json();
+                localStorage.setItem('pks_kursy_cache', JSON.stringify(dane));
+                przypiszDane(dane);
+            } catch (blad) {
+                console.warn("Nie udało się pobrać pliku JSON, sprawdzam pamięć podręczną.", blad);
+                const zapisaneDane = localStorage.getItem('pks_kursy_cache');
+                if (zapisaneDane) {
+                    przypiszDane(JSON.parse(zapisaneDane));
+                }
+            }
+        }
+
+        function przypiszDane(dane) {
+            nazwyKursow = dane.nazwyKursow || {};
+            obiegi = dane.obiegi || {};
+            trasy = dane.trasy || {};
+            zmienObieg();
+        }
+
+        let aktualnyIndeksPrzystanku = 0;
+        let aktywnaTrasa = [];
+
+        let timerEwakuacja = null;
+        function rozpocznijTrzymanieEwakuacji() {
+            const btn = document.getElementById('btn-ewakuacja');
+            btn.classList.add('holding');
+            timerEwakuacja = setTimeout(() => {
+                anulujTrzymanieEwakuacji();
+            }, 4000);
+        }
+
+        function anulujTrzymanieEwakuacji() {
+            const btn = document.getElementById('btn-ewakuacja');
+            if (btn) btn.classList.remove('holding');
+            if (timerEwakuacja) {
+                clearTimeout(timerEwakuacja);
+                timerEwakuacja = null;
+            }
+        }
+
+        function zmienObieg() {
+            const wybranyObieg = document.getElementById('obiegi').value;
+            const kontenerWyszukiwania = document.getElementById('kontener-wyszukiwania');
+            const kontenerListy = document.getElementById('kontener-listy-kursow');
+            const selectKursy = document.getElementById('kursy');
+
+            if (wybranyObieg === "ALL") {
+                kontenerWyszukiwania.style.display = 'flex';
+                kontenerListy.style.display = 'none';
+                aktywnaTrasa = [];
+                aktualnyIndeksPrzystanku = 0;
+                odswiezWidokPrzystankow();
+            } else {
+                kontenerWyszukiwania.style.display = 'none';
+                kontenerListy.style.display = 'block';
+                selectKursy.innerHTML = '<option value="0000">*WYBIERZ KURS*</option>';
+                
+                let kluczeKursow = obiegi[wybranyObieg] ? obiegi[wybranyObieg] : [];
+
+                if (wybranyObieg === "20") {
+                    const dzisiajDzienTygodnia = new Date().getDay();
+                    let kursyDoUkrycia = [];
+                    if (dzisiajDzienTygodnia === 1 || dzisiajDzienTygodnia === 3 || dzisiajDzienTygodnia === 5) {
+                        kursyDoUkrycia = ["8281", "8282", "8283", "8284"];
+                    } else if (dzisiajDzienTygodnia === 4) {
+                        kursyDoUkrycia = ["8271", "8272", "8273", "8274"];
+                    } else {
+                        kursyDoUkrycia = ["8271", "8272", "8273", "8274", "8281", "8282", "8283", "8284"];
+                    }
+                    kluczeKursow = kluczeKursow.filter(idKursu => !kursyDoUkrycia.includes(idKursu));
+                }
+
+                kluczeKursow.forEach(idKursu => {
+                    const opt = document.createElement('option');
+                    opt.value = idKursu;
+                    opt.innerText = nazwyKursow[idKursu] || ("Kurs " + idKursu);
+                    selectKursy.appendChild(opt);
+                });
+                zmienKursZListy();
+            }
+        }
+
+        document.getElementById('szukaj-kursu').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') { szukajKursuZPalca(); }
         });
-    }
 
-    inicjalizujRozklady();
-</script>
+        function szukajKursuZPalca() {
+            const wpisanyKurs = document.getElementById('szukaj-kursu').value.trim();
+            if (wpisanyKurs === "") return;
 
+            if (trasy[wpisanyKurs]) {
+                aktywnaTrasa = trasy[wpisanyKurs];
+                aktualnyIndeksPrzystanku = 0;
+                odswiezWidokPrzystankow();
+            } else {
+                alert("Nie znaleziono kursu o numerze: " + wpisanyKurs);
+                aktywnaTrasa = [];
+                aktualnyIndeksPrzystanku = 0;
+                odswiezWidokPrzystankow();
+            }
+        }
+
+        function zmienKursZListy() {
+            const wybranyKurs = document.getElementById('kursy').value;
+            if (wybranyKurs === "0000" || !trasy[wybranyKurs]) {
+                aktywnaTrasa = [];
+                aktualnyIndeksPrzystanku = 0;
+            } else {
+                aktywnaTrasa = trasy[wybranyKurs];
+                aktualnyIndeksPrzystanku = 0;
+            }
+            odswiezWidokPrzystankow();
+        }
+
+        function odswiezWidokPrzystankow() {
+            const kontenerPrzystankow = document.getElementById('lista-przystankow');
+            const elementAktualny = document.getElementById('aktywny-przystanek-nazwa');
+            const elementNastepny = document.getElementById('nastepny-przystanek-nazwa');
+            kontenerPrzystankow.innerHTML = '';
+
+            if (aktywnaTrasa.length === 0) {
+                elementAktualny.innerText = "Brak";
+                elementNastepny.innerText = "Brak";
+                return;
+            }
+
+            if (aktywnaTrasa[aktualnyIndeksPrzystanku]) {
+                elementAktualny.innerHTML = `<span style="color:#ffcc00; font-size:0.85em; margin-right:5px;">${aktywnaTrasa[aktualnyIndeksPrzystanku].czas}</span>${aktywnaTrasa[aktualnyIndeksPrzystanku].nazwa}`;
+            } else {
+                elementAktualny.innerText = "Brak";
+            }
+
+            if (aktualnyIndeksPrzystanku + 1 < aktywnaTrasa.length && aktywnaTrasa[aktualnyIndeksPrzystanku + 1]) {
+                const nastepnyPrzystanek = aktywnaTrasa[aktualnyIndeksPrzystanku + 1];
+                elementNastepny.innerHTML = `<span style="color:#ffcc00; font-size:0.85em; margin-right:5px;">${nastepnyPrzystanek.czas}</span>${nastepnyPrzystanek.nazwa}`;
+            } else {
+                elementNastepny.innerText = "Koniec trasy";
+            }
+
+            aktywnaTrasa.forEach((przystanek, index) => {
+                const card = document.createElement('div');
+                card.className = 'stop-card';
+                if (index === aktualnyIndeksPrzystanku) {
+                    card.classList.add('active-stop');
+                }
+                card.innerHTML = `
+                    <div class="stop-time">${przystanek.czas}</div>
+                    <div class="stop-name">${przystanek.nazwa}</div>
+                `;
+                kontenerPrzystankow.appendChild(card);
+            });
+        }
+
+        function zmienAktywnyPrzystanek(kierunek) {
+            if (aktywnaTrasa.length === 0) return;
+            
+            aktualnyIndeksPrzystanku += kierunek;
+            if (aktualnyIndeksPrzystanku < 0) {
+                aktualnyIndeksPrzystanku = 0;
+            } else if (aktualnyIndeksPrzystanku >= aktywnaTrasa.length) {
+                aktualnyIndeksPrzystanku = aktywnaTrasa.length - 1;
+            }
+            odswiezWidokPrzystankow();
+        }
+
+        function odtworzJakoNastepny() {
+            if (aktywnaTrasa.length === 0 || !aktywnaTrasa[aktualnyIndeksPrzystanku]) return;
+            const p = aktywnaTrasa[aktualnyIndeksPrzystanku];
+            
+            if (p.zapowiedz.includes("Przystanek końcowy") || p.zapowiedz.includes("przystanek końcowy")) {
+                odtwarzajKolejnePliki(["koncowy.mp3"]);
+                return;
+            }
+
+            let nazwaPrzystankuSurowa = p.nazwa.split(" - ")[0].trim();
+            let plikMiejscowosci = mapowaniePrzystankowAudio[p.nazwa] || mapowaniePrzystankowAudio[nazwaPrzystankuSurowa];
+
+            let playLista = ["Nastepny_przystanek.mp3"];
+            if (plikMiejscowosci) {
+                playLista.push(plikMiejscowosci);
+            } else {
+                console.warn("Brak pliku MP3 dla przystanku:", p.nazwa);
+            }
+
+            odtwarzajKolejnePliki(playLista);
+        }
+
+        function odtworzJakoAktualny() {
+            if (aktywnaTrasa.length === 0 || !aktywnaTrasa[aktualnyIndeksPrzystanku]) return;
+            const p = aktywnaTrasa[aktualnyIndeksPrzystanku];
+            
+            let plikMiejscowosci = mapowaniePrzystankowAudio[p.nazwa];
+            if (plikMiejscowosci) {
+                odtwarzajKolejnePliki([plikMiejscowosci]);
+            } else {
+                console.warn("Brak pliku MP3 dla przystanku:", p.nazwa);
+            }
+        }
+
+        pobierzRozkladyZGitHuba();
+    </script>
 </body>
 </html>
